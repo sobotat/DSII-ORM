@@ -13,6 +13,11 @@ public class Food {
     private String allergens;
     private double cost;
 
+    public Food(int foodId, int foodTypeId){
+        this.foodId = foodId;
+        this.foodType = new FoodType(foodTypeId);
+    }
+
     public Food(int foodId, FoodType foodType, String name, String description, String allergens, double cost) {
         this.foodId = foodId;
         this.foodType = foodType;
@@ -30,8 +35,12 @@ public class Food {
     @Getter
     @ToString
     public static class FoodType {
-        private final int typeId;
-        private final String name;
+        private int typeId;
+        private String name;
+
+        public FoodType(int typeId){
+            this.typeId = typeId;
+        }
 
         public FoodType(int typeId, String name) {
             this.typeId = typeId;

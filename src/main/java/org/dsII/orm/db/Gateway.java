@@ -13,10 +13,10 @@ import java.util.TimerTask;
 
 public interface Gateway<T> {
 
-    T find(int id);
-    boolean create(T obj);
-    boolean update(T obj);
-    boolean delete(T obj);
+    T find(int id) throws SQLException;
+    boolean create(T obj) throws SQLException;
+    boolean update(T obj) throws SQLException;
+    boolean delete(T obj) throws SQLException;
 
     class DBConnection{
         private static final Logger logger = LogManager.getLogger(DBConnection.class.getName());

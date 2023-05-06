@@ -2,8 +2,10 @@ package org.dsII.orm.domain;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 @Getter
+@ToString
 public class OrderItem {
     private int orderItemId;
     private final Order order;
@@ -12,13 +14,13 @@ public class OrderItem {
     @Setter private String state;
     private final User createdBy;
 
-    public OrderItem(int orderItemId, Order order, MenuItem menuItem, int count, String state, Integer cookedById) {
+    public OrderItem(int orderItemId, Order order, MenuItem menuItem, int count, String state, User createdBy) {
         this.orderItemId = orderItemId;
         this.order = order;
         this.menuItem = menuItem;
         this.count = count;
         this.state = state;
-        this.createdBy = null;
+        this.createdBy = createdBy;
     }
 
     // Setters

@@ -20,8 +20,18 @@ public class User {
     private String password;
 
     private UserRole userRole;
+    private boolean active;
 
-    public User(int userId, String firstName, String lastName, LocalDate bornDate, String email, String password, UserRole userRole) {
+    public User(int userId){
+        this.userId = userId;
+    }
+
+    public User(int userId, int roleId){
+        this.userId = userId;
+        this.userRole = new UserRole(roleId);
+    }
+
+    public User(int userId, String firstName, String lastName, LocalDate bornDate, String email, String password, UserRole userRole, boolean active) {
         this.userId = userId;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -29,6 +39,7 @@ public class User {
         this.email = email;
         this.password = password;
         this.userRole = userRole;
+        this.active = active;
     }
 
     // Setters
@@ -39,26 +50,21 @@ public class User {
         this.password = password;
     }
 
+    @Getter
+    @ToString
     public static class UserRole {
-        private final int roleId;
-        private final String name;
-        private final String description;
+        private int roleId;
+        private String name;
+        private String description;
+
+        public UserRole(int roleId){
+            this.roleId = roleId;
+        }
 
         public UserRole(int roleId, String name, String description) {
             this.roleId = roleId;
             this.name = name;
             this.description = description;
-        }
-
-        // Getters
-        public int getRoleId() {
-            return roleId;
-        }
-        public String getName() {
-            return name;
-        }
-        public String getDescription() {
-            return description;
         }
     }
 }
